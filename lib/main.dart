@@ -1,5 +1,4 @@
-import 'package:app_sucre/screens/home_screen.dart';
-import 'package:app_sucre/screens/login_screen.dart';
+import 'package:app_sucre/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -10,10 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'login',
+      initialRoute: 'incidents',
       routes: {
+        '/': (BuildContext context) => HomeScreen(),
         'login': (BuildContext context) => LoginScreen(),
-        'home': (BuildContext context) => HomePage(),
+        'register': (BuildContext context) => RegisterScreen(),
+         'incidents': (BuildContext context) => IncidentsScreen(),
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.white,
