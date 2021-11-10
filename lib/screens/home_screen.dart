@@ -13,19 +13,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Inicio')),
       drawer: MenuWidget(),
-      body: GridView.count(
-        primary: false,
-        padding: EdgeInsets.all(20),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 20,
-        crossAxisCount: 2,
-        children: <Widget>[
-         
-              _cardInicio2(),
-             _cardInicio2(),
-               _cardInicio2(),
-             _cardInicio2(),
-        
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 50.0),
+        children: [
+          Wrap(
+              spacing: 20.0, // gap between adjacent chips
+              runSpacing: 40.0,
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              runAlignment: WrapAlignment.spaceEvenly,
+              children: <Widget>[
+                _cardInicio2(),
+                _cardInicio2(),
+                _cardInicio2(),
+                _cardInicio2(),
+              ]),
         ],
       ),
     );
@@ -43,9 +45,7 @@ class HomeScreen extends StatelessWidget {
             height: 150.0,
             fit: BoxFit.cover,
           ),
-          Container(
-              padding: EdgeInsets.all(10.0),
-              child: Text('Incidencias'))
+          Container(padding: EdgeInsets.all(10.0), child: Text('Incidencias'))
         ],
       ),
     );

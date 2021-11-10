@@ -9,12 +9,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'incidents',
+      initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
         'login': (BuildContext context) => LoginScreen(),
         'register': (BuildContext context) => RegisterScreen(),
-         'incidents': (BuildContext context) => IncidentsScreen(),
+        'incidents': (BuildContext context) => IncidentsScreen(),
+        'citizenreport': (BuildContext context) => citizenReportScreen(),
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.white,
