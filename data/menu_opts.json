@@ -2,19 +2,22 @@
     "nombreApp" : "SucreApp",
     "rutas" : [
         {
-            "ruta" : "alert",
-            "icon" : "add_alert",
-            "texto": "Alertas"
+            "ruta" : "home",
+            "icon" : "home_rounded",
+            "color": "grey",
+            "texto": "Inicio"
         },
         {
-            "ruta" : "avatar",
-            "icon" : "accessibility",
-            "texto": "Avatars"
+            "ruta" : "procedure",
+            "icon" : "description_rounded",
+            "color": "grey",
+            "texto": "Trámites"
         },
         {
-            "ruta" : "card",
-            "icon" : "folder_open",
-            "texto": "Cards - Tarjetas"
+            "ruta" : "turismo",
+            "icon" : "pin_drop_rounded",
+            "color": "grey",
+            "texto": "Turismo"
         }
     ]
 }

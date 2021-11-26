@@ -1,4 +1,5 @@
 // Importaciones Flutter
+import 'package:app_sucre/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Inicio')),
-      drawer: MenuWidget(),
+      // drawer: MenuWidget(),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 50.0),
         children: [
@@ -30,6 +31,18 @@ class HomeScreen extends StatelessWidget {
               ]),
         ],
       ),
+    );
+  }
+
+  Widget _menu() {
+    return FutureBuilder(
+      future: menuProvider.cargarData(),
+      initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+        return Scaffold(
+            drawer: MenuWidget(),
+        );
+      },
     );
   }
 
