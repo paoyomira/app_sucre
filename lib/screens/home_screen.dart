@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Inicio')),
-      // drawer: MenuWidget(),
+      drawer: MenuWidget(),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 50.0),
         children: [
@@ -25,9 +25,9 @@ class HomeScreen extends StatelessWidget {
               runAlignment: WrapAlignment.spaceEvenly,
               children: <Widget>[
                 _cardInicio2(),
-                _cardInicio2(),
-                _cardInicio2(),
-                _cardInicio2(),
+                // _cardInicio2(),
+                // _cardInicio2(),
+                // _cardInicio2(),
               ]),
         ],
       ),
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return Scaffold(
-            drawer: MenuWidget(),
+          drawer: MenuWidget(),
         );
       },
     );

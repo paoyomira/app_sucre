@@ -20,16 +20,16 @@ class MenuWidget extends StatelessWidget {
               title: Text('Inicio'),
               onTap: () => Navigator.pushReplacementNamed(
                   context, HomeScreen.routeName)),
-          ListTile(
-            leading: Icon(Icons.description_rounded, color: Colors.grey),
-            title: Text('Trámites'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.pin_drop_rounded, color: Colors.grey),
-            title: Text('Turismo'),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.description_rounded, color: Colors.grey),
+          //   title: Text('Trámites'),
+          //   onTap: () {},
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.pin_drop_rounded, color: Colors.grey),
+          //   title: Text('Turismo'),
+          //   onTap: () {},
+          // ),
           ListTile(
               leading: Icon(Icons.manage_search_rounded, color: Colors.grey),
               title: Text('Incidencias'),
@@ -42,6 +42,4 @@ class MenuWidget extends StatelessWidget {
       ),
     );
   }
-
-  
 }
