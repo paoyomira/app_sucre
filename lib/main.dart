@@ -9,18 +9,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'initial',
+      initialRoute: 'citizenreport',
       routes: {
-        '/': (BuildContext context) => HomeScreen(),
+        'home': (BuildContext context) => HomeScreen(),
         'login': (BuildContext context) => LoginScreen(),
         'register': (BuildContext context) => RegisterScreen(),
         'incidents': (BuildContext context) => IncidentsScreen(),
         'citizenreport': (BuildContext context) => citizenReportScreen(),
         'initial': (BuildContext context) => InitialScreen(),
+        'latestreports': (BuildContext context) => LatestReportsScreen(),
       },
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.white,
-      ),
+      theme: ThemeData(fontFamily: 'Raleway'),
+      // theme: ThemeData.light().copyWith(
+      //   scaffoldBackgroundColor: Colors.white,
+      // ),
     );
   }
 }

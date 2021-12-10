@@ -4,3 +4,4 @@ export 'package:app_sucre/screens/register_screen.dart';
 export 'package:app_sucre/screens/incidents_screen.dart';
 export 'package:app_sucre/screens/citizen_report_screen.dart';
 export 'package:app_sucre/screens/initial_screen.dart';
+export 'package:app_sucre/screens/latest_reports_screen.dart';

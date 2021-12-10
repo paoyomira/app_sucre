@@ -12,70 +12,51 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Inicio')),
-      drawer: MenuWidget(),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 50.0),
-        children: [
-          Wrap(
-              spacing: 20.0, // gap between adjacent chips
-              runSpacing: 40.0,
-              alignment: WrapAlignment.center,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              runAlignment: WrapAlignment.spaceEvenly,
-              children: <Widget>[
-                _cardInicio2(),
-                // _cardInicio2(),
-                // _cardInicio2(),
-                // _cardInicio2(),
+        appBar: AppBar(title: Text('Inicio')),
+        drawer: MenuWidget(),
+        body: Container(
+          child: Table(
+            children: [
+              TableRow(children: [
+                _HomeCard(),
+                _HomeCard(),
               ]),
-        ],
-      ),
-    );
-  }
-
-  Widget _menu() {
-    return FutureBuilder(
-      future: menuProvider.cargarData(),
-      initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        return Scaffold(
-          drawer: MenuWidget(),
-        );
-      },
-    );
-  }
-
-  Widget _cardInicio2() {
-    final card = Container(
-      child: Column(
-        children: <Widget>[
-          FadeInImage(
-            image: NetworkImage(
-                'https://static.photocdn.pt/images/articles/2017_1/iStock-545347988.jpg'),
-            placeholder: AssetImage('assets/loading.gif'),
-            fadeInDuration: Duration(milliseconds: 200),
-            height: 150.0,
-            fit: BoxFit.cover,
+              TableRow(children: [
+                _HomeCard(),
+                _HomeCard(),
+              ]),
+            ],
           ),
-          Container(padding: EdgeInsets.all(10.0), child: Text('Incidencias'))
-        ],
-      ),
-    );
+        ));
+  }
+}
+
+class _HomeCard extends StatelessWidget {
+  Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(15),
+      height: 180,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.0),
-          color: Colors.white,
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black26,
-                blurRadius: 10.0,
-                spreadRadius: 2.0,
-                offset: Offset(2.0, -10.0)),
-          ]),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30.0),
-        child: card,
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.blue,
+            child: Icon(
+              Icons.pie_chart_outline_rounded,
+              size: 35,
+            ),
+            radius: 30,
+          ),
+          SizedBox(height: 10),
+          Text(
+            'General',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          )
+        ],
       ),
     );
   }

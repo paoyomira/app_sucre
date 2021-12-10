@@ -38,6 +38,11 @@ class MenuWidget extends StatelessWidget {
                 Navigator.pushReplacementNamed(
                     context, IncidentsScreen.routeName);
               }),
+          ListTile(
+            leading: Icon(Icons.logout_rounded, color: Colors.grey),
+            title: Text('Salir'),
+            onTap: () {},
+          ),
         ],
       ),
     );

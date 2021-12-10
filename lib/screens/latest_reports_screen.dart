@@ -1,18 +1,13 @@
-// Importaciones Flutter
 import 'package:flutter/material.dart';
-
-// Importaciones Aplicación
-import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 
-class IncidentsScreen extends StatelessWidget {
-  static final String routeName = 'incidents';
+class LatestReportsScreen extends StatelessWidget {
+  const LatestReportsScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Incidencias'),
-        ),
+        appBar: AppBar(title: Text('Últimos Reportes')),
         drawer: MenuWidget(),
         body: Container(
             color: Color(0xffF8FAFB),
@@ -20,7 +15,6 @@ class IncidentsScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 6.0),
             child: ListView(
               children: [
-                _searchBar(),
                 Column(
                   children: [
                     incidentsCards(),
@@ -32,49 +26,6 @@ class IncidentsScreen extends StatelessWidget {
                 ),
               ],
             )));
-  }
-
-  Widget _searchBar() {
-    return Column(
-      children: <Widget>[
-        Positioned(
-          top: 10,
-          right: 15,
-          left: 15,
-          child: Container(
-            color: Colors.grey.shade50,
-            child: Row(
-              children: <Widget>[
-                IconButton(
-                  splashColor: Colors.grey,
-                  icon: Icon(Icons.search_rounded),
-                  onPressed: () {},
-                ),
-                Expanded(
-                  child: TextField(
-                    cursorColor: Colors.black,
-                    keyboardType: TextInputType.text,
-                    textInputAction: TextInputAction.go,
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                        hintText: 'Búsqueda'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: IconButton(
-                    splashColor: Colors.grey,
-                    icon: Icon(Icons.clear_rounded),
-                    onPressed: () {},
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
   }
 
   Widget incidentsCards() {
@@ -97,10 +48,14 @@ class IncidentsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
-                  child: const Text('Reportar'),
+                  child: const Text('Tipo Incidencia'),
                   onPressed: () {/* ... */},
                 ),
                 const SizedBox(width: 8),
+                TextButton(
+                  child: const Text('Estado'),
+                  onPressed: () {/* ... */},
+                ),
               ],
             ),
           ],
