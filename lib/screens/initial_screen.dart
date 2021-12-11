@@ -18,7 +18,7 @@ class InitialScreen extends StatelessWidget {
         children: [
           SizedBox(height: 10.0),
           Image(
-            image: AssetImage('assets/initial_01.png'),
+            image: AssetImage('assets/img/initial_01.png'),
           ),
           SizedBox(height: 70.0),
           _buttonLogin(context),
