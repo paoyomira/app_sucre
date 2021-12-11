@@ -2,11 +2,12 @@
 
 import 'package:app_sucre/screens/home_screen.dart';
 import 'package:app_sucre/screens/initial_screen.dart';
-import 'package:app_sucre/screens/login_screen.dart';
 import 'package:app_sucre/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +73,7 @@ Widget _textRow() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
+    children: const [
       Text('¿No tienes una cuenta?',
           style: TextStyle(
             fontSize: 18,
@@ -90,38 +91,36 @@ Widget _textRow() {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Form(
-        child: Column(
-          children: [
-            TextFormField(
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: 'Correo',
-                labelText: 'Correo',
-                prefixIcon: Icons.person_rounded,
-              ),
+    return Form(
+      child: Column(
+        children: [
+          TextFormField(
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecorations.authInputDecoration(
+              hintText: 'Correo',
+              labelText: 'Correo',
+              prefixIcon: Icons.person_rounded,
             ),
-            SizedBox(
-              height: 30,
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          TextFormField(
+            autocorrect: false,
+            obscureText: true,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecorations.authInputDecoration(
+              hintText: 'Contraseña',
+              labelText: 'Contraseña',
+              prefixIcon: Icons.lock_rounded,
             ),
-            TextFormField(
-              autocorrect: false,
-              obscureText: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecorations.authInputDecoration(
-                hintText: 'Contraseña',
-                labelText: 'Contraseña',
-                prefixIcon: Icons.lock_rounded,
-              ),
-            ),
-            SizedBox(
-              height: 60,
-            ),
-            _buttonLogin(context),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 60,
+          ),
+          _buttonLogin(context),
+        ],
       ),
     );
   }

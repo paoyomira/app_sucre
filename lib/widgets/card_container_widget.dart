@@ -8,25 +8,25 @@ class CardContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         decoration: createCardShape(),
-        child: this.child,
+        child: child,
       ),
     );
   }
 
   BoxDecoration createCardShape() => BoxDecoration(
-          color: Color.fromRGBO(248, 250, 251, 1.0),
-          borderRadius: BorderRadius.circular(25),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.black12,
-          //     blurRadius: 15,
-          //     offset: Offset(10, 0),
-          //   )
-          // ]
-          );
+        color: const Color.fromRGBO(248, 250, 251, 1.0),
+        borderRadius: BorderRadius.circular(25),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black12,
+        //     blurRadius: 15,
+        //     offset: Offset(10, 0),
+        //   )
+        // ]
+      );
 }

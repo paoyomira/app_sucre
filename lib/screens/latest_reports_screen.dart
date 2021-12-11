@@ -7,20 +7,20 @@ class LatestReportsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Últimos Reportes')),
-        drawer: MenuWidget(),
+        appBar: AppBar(title: const Text('Últimos Reportes')),
+        drawer: const MenuWidget(),
         body: Container(
-            color: Color(0xffF8FAFB),
-            padding: EdgeInsets.all(20.0),
-            margin: EdgeInsets.symmetric(vertical: 6.0),
+            color: const Color(0xffF8FAFB),
+            padding: const EdgeInsets.all(20.0),
+            margin: const EdgeInsets.symmetric(vertical: 6.0),
             child: ListView(
               children: [
                 Column(
                   children: [
                     incidentsCards(),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     incidentsCards(),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     incidentsCards(),
                   ],
                 ),
