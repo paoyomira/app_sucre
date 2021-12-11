@@ -2,31 +2,32 @@
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
-import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 
 class IncidentsScreen extends StatelessWidget {
-  static final String routeName = 'incidents';
+  static const String routeName = 'incidents';
+
+  const IncidentsScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Incidencias'),
+          title: const Text('Incidencias'),
         ),
-        drawer: MenuWidget(),
+        drawer: const MenuWidget(),
         body: Container(
-            color: Color(0xffF8FAFB),
-            padding: EdgeInsets.all(20.0),
-            margin: EdgeInsets.symmetric(vertical: 6.0),
+            color: const Color(0xffF8FAFB),
+            padding: const EdgeInsets.all(20.0),
+            margin: const EdgeInsets.symmetric(vertical: 6.0),
             child: ListView(
               children: [
                 _searchBar(),
                 Column(
                   children: [
                     incidentsCards(),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     incidentsCards(),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     incidentsCards(),
                   ],
                 ),
@@ -47,10 +48,10 @@ class IncidentsScreen extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   splashColor: Colors.grey,
-                  icon: Icon(Icons.search_rounded),
+                  icon: const Icon(Icons.search_rounded),
                   onPressed: () {},
                 ),
-                Expanded(
+                const Expanded(
                   child: TextField(
                     cursorColor: Colors.black,
                     keyboardType: TextInputType.text,
@@ -65,7 +66,7 @@ class IncidentsScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: IconButton(
                     splashColor: Colors.grey,
-                    icon: Icon(Icons.clear_rounded),
+                    icon: const Icon(Icons.clear_rounded),
                     onPressed: () {},
                   ),
                 ),

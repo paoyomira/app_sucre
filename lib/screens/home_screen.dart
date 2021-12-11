@@ -1,48 +1,47 @@
 // Importaciones Flutter
-import 'package:app_sucre/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
-import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
-  static final String routeName = '/';
+  static const String routeName = '/';
+
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Inicio')),
-        drawer: MenuWidget(),
-        body: Container(
-          child: Table(
-            children: [
-              TableRow(children: [
-                _HomeCard(),
-                _HomeCard(),
-              ]),
-              TableRow(children: [
-                _HomeCard(),
-                _HomeCard(),
-              ]),
-            ],
-          ),
+        appBar: AppBar(title: const Text('Inicio')),
+        drawer: const MenuWidget(),
+        body: Table(
+          children: [
+            TableRow(children: [
+              _HomeCard(),
+              _HomeCard(),
+            ]),
+            TableRow(children: [
+              _HomeCard(),
+              _HomeCard(),
+            ]),
+          ],
         ));
   }
 }
 
 class _HomeCard extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       height: 180,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
+        color: const Color.fromRGBO(62, 66, 107, 0.7),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           CircleAvatar(
             backgroundColor: Colors.blue,
             child: Icon(

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:app_sucre/screens/screens.dart';
 
 class MenuWidget extends StatelessWidget {
+  const MenuWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,14 +12,14 @@ class MenuWidget extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             child: Container(),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/menu-img.jpg'),
                     fit: BoxFit.cover)),
           ),
           ListTile(
-              leading: Icon(Icons.home_rounded, color: Colors.grey),
-              title: Text('Inicio'),
+              leading: const Icon(Icons.home_rounded, color: Colors.grey),
+              title: const Text('Inicio'),
               onTap: () => Navigator.pushReplacementNamed(
                   context, HomeScreen.routeName)),
           // ListTile(
@@ -31,16 +33,17 @@ class MenuWidget extends StatelessWidget {
           //   onTap: () {},
           // ),
           ListTile(
-              leading: Icon(Icons.manage_search_rounded, color: Colors.grey),
-              title: Text('Incidencias'),
+              leading:
+                  const Icon(Icons.manage_search_rounded, color: Colors.grey),
+              title: const Text('Incidencias'),
               onTap: () {
                 // Navigator.pop(context);
                 Navigator.pushReplacementNamed(
                     context, IncidentsScreen.routeName);
               }),
           ListTile(
-            leading: Icon(Icons.logout_rounded, color: Colors.grey),
-            title: Text('Salir'),
+            leading: const Icon(Icons.logout_rounded, color: Colors.grey),
+            title: const Text('Salir'),
             onTap: () {},
           ),
         ],

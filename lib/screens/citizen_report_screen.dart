@@ -2,31 +2,32 @@
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
-import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 
+// ignore: camel_case_types
 class citizenReportScreen extends StatefulWidget {
-  citizenReportScreen({Key? key}) : super(key: key);
+  const citizenReportScreen({Key? key}) : super(key: key);
 
   @override
-  _citizenReportScreenState createState() => _citizenReportScreenState();
+  _CitizenReportScreenState createState() => _CitizenReportScreenState();
 }
 
-class _citizenReportScreenState extends State<citizenReportScreen> {
+class _CitizenReportScreenState extends State<citizenReportScreen> {
   String _nombre = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reporte Ciudadano'),
+        title: const Text('Reporte Ciudadano'),
       ),
+      drawer: const MenuWidget(),
       body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         children: <Widget>[
           _crearInput(),
-          Divider(),
-           _crearInput(),
-          Divider(),
+          const Divider(),
+          _crearInput(),
+          const Divider(),
         ],
       ),
     );
@@ -42,8 +43,8 @@ class _citizenReportScreenState extends State<citizenReportScreen> {
         ),
         hintText: 'Nombre',
         labelText: 'Nombre',
-        suffixIcon: Icon(Icons.accessibility),
-        icon: Icon(Icons.account_circle),
+        suffixIcon: const Icon(Icons.accessibility),
+        icon: const Icon(Icons.account_circle),
       ),
       onChanged: (valor) {
         _nombre = valor;
@@ -54,7 +55,7 @@ class _citizenReportScreenState extends State<citizenReportScreen> {
     );
   }
 
-   Widget _citizenReport() {
+  Widget _citizenReport() {
     return TextFormField(
       // autofocus: true,
       textCapitalization: TextCapitalization.sentences,
@@ -64,8 +65,8 @@ class _citizenReportScreenState extends State<citizenReportScreen> {
         ),
         hintText: 'Nombre',
         labelText: 'Nombre',
-        suffixIcon: Icon(Icons.accessibility),
-        icon: Icon(Icons.account_circle),
+        suffixIcon: const Icon(Icons.accessibility),
+        icon: const Icon(Icons.account_circle),
       ),
       onChanged: (valor) {
         _nombre = valor;
