@@ -23,8 +23,9 @@ class MenuWidget extends StatelessWidget {
           ListTile(
               leading: const Icon(Icons.home_rounded, color: Colors.grey),
               title: const Text('Inicio'),
-              onTap: () => Navigator.pushReplacementNamed(
-                  context, HomeScreen.routeName)),
+              onTap: () {
+                Navigator.pushReplacementNamed(context, 'home');
+              }),
           // ListTile(
           //   leading: Icon(Icons.description_rounded, color: Colors.grey),
           //   title: Text('Trámites'),
@@ -44,7 +45,9 @@ class MenuWidget extends StatelessWidget {
                 Navigator.pushReplacementNamed(
                     context, IncidentsScreen.routeName);
               }),
-
+          const SizedBox(
+            height: 400.0,
+          ),
           ListTile(
             leading: const Icon(Icons.logout_rounded, color: Colors.grey),
             title: const Text('Cerrar Sesión'),
