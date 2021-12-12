@@ -1,3 +1,4 @@
+import 'package:app_sucre/providers/app_providers/notification_provider.dart';
 import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/services/services.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,7 @@ class App extends StatelessWidget {
         'initial': (BuildContext context) => const InitialScreen(),
         'latestreports': (BuildContext context) => const LatestReportsScreen(),
       },
+      scaffoldMessengerKey: NotificationProvider.messengerKey,
       theme: ThemeData(fontFamily: 'Raleway'),
       // theme: ThemeData.light().copyWith(
       //   scaffoldBackgroundColor: Colors.white,
