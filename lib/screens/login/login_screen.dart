@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:app_sucre/screens/home_screen.dart';
-import 'package:app_sucre/screens/initial_screen.dart';
+import 'package:app_sucre/screens/home/home_screen.dart';
+import 'package:app_sucre/screens/home/initial_screen.dart';
 import 'package:app_sucre/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 

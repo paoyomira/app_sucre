@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:app_sucre/screens/login_screen.dart';
+import 'package:app_sucre/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatelessWidget {
