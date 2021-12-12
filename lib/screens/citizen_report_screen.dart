@@ -14,6 +14,10 @@ class citizenReportScreen extends StatefulWidget {
 
 class _CitizenReportScreenState extends State<citizenReportScreen> {
   String _nombre = '';
+
+  String _opcionSeleccionada = 'Orange';
+  final List<String> _poderes = ['Orange', 'watermelon', 'Pineapple'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,21 +32,23 @@ class _CitizenReportScreenState extends State<citizenReportScreen> {
           const Divider(),
           _crearInput(),
           const Divider(),
+          _citizenReport(),
+          _crearDropdown()
         ],
       ),
     );
   }
 
   Widget _crearInput() {
-    return TextField(
+    return TextFormField(
       // autofocus: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        hintText: 'Nombre',
-        labelText: 'Nombre',
+        hintText: 'Detalle Incidencia',
+        labelText: 'Incendio Domestico',
         suffixIcon: const Icon(Icons.accessibility),
         icon: const Icon(Icons.account_circle),
       ),
@@ -74,6 +80,47 @@ class _CitizenReportScreenState extends State<citizenReportScreen> {
           print(_nombre);
         });
       },
+    );
+  }
+
+  List<DropdownMenuItem<String>> getopciones() {
+    List<DropdownMenuItem<String>> lista = [];
+    _poderes.forEach((poder) {
+      lista.add(DropdownMenuItem(
+        child: Text(poder),
+        value: poder,
+      ));
+    });
+
+    return lista;
+  }
+
+  Widget _crearDropdown() {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 4),
+          borderRadius: BorderRadius.circular(12)),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      margin: const EdgeInsets.all(16),
+      child: Row(
+        children: <Widget>[
+          const Icon(Icons.select_all),
+          SizedBox(width: 30.0),
+          Expanded(
+            child: DropdownButtonHideUnderline(
+              child: DropdownButtonFormField(
+                  value: _opcionSeleccionada,
+                  items: getopciones(),
+                  isExpanded: true,
+                  onChanged: (opt) {
+                    setState(() {
+                      _opcionSeleccionada = opt.toString();
+                    });
+                  }),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
