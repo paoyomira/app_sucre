@@ -38,7 +38,7 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
-    String? errorMessage;
+
     return Form(
       key: loginForm.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -46,7 +46,7 @@ class _LoginForm extends StatelessWidget {
         children: [
           TextFormField(
             autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.number,
             decoration: InputDecorations.authInputDecoration(
                 hintText: 'Número de cédula',
                 labelText: 'Cédula del Ciudadano',
@@ -65,7 +65,7 @@ class _LoginForm extends StatelessWidget {
           TextFormField(
             autocorrect: false,
             obscureText: true,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.visiblePassword,
             decoration: InputDecorations.authInputDecoration(
                 hintText: '*****',
                 labelText: 'Contraseña',
@@ -74,15 +74,10 @@ class _LoginForm extends StatelessWidget {
             validator: (value) {
               return (value != null && value.length >= 6)
                   ? null
-                  : 'La contraseña debe de ser de 6 caracteres';
+                  : 'Por lo menos 6 caracteres';
             },
           ),
-          SizedBox(height: 10),
-          // Text(
-          //   'Esto es un texto',
-          //   style: TextStyle(color: Colors.red),
-          // ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           MaterialButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -107,17 +102,19 @@ class _LoginForm extends StatelessWidget {
 
                       loginForm.isLoading = true;
 
-                      // TODO: validar si el login es correcto
-                      errorMessage = await authService.loginUser(
+                      final String? errorMessage = await authService.loginUser(
                           loginForm.email, loginForm.password);
                       print(errorMessage);
                       if (errorMessage == null) {
                         Navigator.pushReplacementNamed(context, 'home');
                       } else {
-                        // TODO: mostrar error en pantalla
-                        print('TODO: mostrar error en pantalla');
+                        if (errorMessage == 'Unauthorized') {
+                          NotificationProvider.showSnackbar(
+                              'Las credenciales no son correctas!');
+                        } else {
+                          NotificationProvider.showSnackbar(errorMessage);
+                        }
 
-                        // NotificationProvider.showSnackbar(errorMessage);
                         loginForm.isLoading = false;
                       }
                     })
