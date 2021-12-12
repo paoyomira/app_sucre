@@ -4,16 +4,14 @@ import 'package:flutter/material.dart';
 // Importaciones Aplicación
 import 'package:app_sucre/widgets/widgets.dart';
 
-// ignore: camel_case_types
-class citizenReportScreen extends StatefulWidget {
-  const citizenReportScreen({Key? key}) : super(key: key);
+class CitizenReportScreen extends StatefulWidget {
+  const CitizenReportScreen({Key? key}) : super(key: key);
 
   @override
   _CitizenReportScreenState createState() => _CitizenReportScreenState();
 }
 
-class _CitizenReportScreenState extends State<citizenReportScreen> {
-  String _nombre = '';
+class _CitizenReportScreenState extends State<CitizenReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +20,21 @@ class _CitizenReportScreenState extends State<citizenReportScreen> {
       ),
       drawer: const MenuWidget(),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-        children: <Widget>[
-          _crearInput(),
-          const Divider(),
-          _crearInput(),
-          const Divider(),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        children: const [
+          Text('Reportar Incidencia'),
+          IncidenceDetailWidget(),
+          Divider(),
+          IncidenceDescriptionWidget(),
+          Divider(),
+          Text('Fotos Evidencia'),
+          Divider(),
+          EvidencePhotosButtonWidget(),
         ],
       ),
     );
   }
+<<<<<<< HEAD
 
   Widget _crearInput() {
     return TextField(
@@ -74,4 +77,6 @@ class _CitizenReportScreenState extends State<citizenReportScreen> {
       },
     );
   }
+=======
+>>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
 }

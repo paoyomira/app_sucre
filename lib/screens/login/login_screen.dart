@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // ignore_for_file: prefer_const_constructors
 import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/services/app_services/authapi_service.dart';
@@ -5,6 +6,14 @@ import 'package:app_sucre/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+=======
+// Importaciones Flutter
+import 'package:flutter/material.dart';
+
+// Importaciones Aplicación
+import 'package:app_sucre/widgets/widgets.dart';
+import 'package:app_sucre/screens/screens.dart';
+>>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,12 +38,17 @@ class LoginScreen extends StatelessWidget {
           )),
           SizedBox(height: 50),
           SizedBox(height: 50),
+<<<<<<< HEAD
+=======
+          CreatAccountWidget(),
+>>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
         ],
       ),
     )));
   }
 }
 
+<<<<<<< HEAD
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -177,3 +191,6 @@ class _LoginForm extends StatelessWidget {
 //     ],
 //   );
 // }
+=======
+// ignore_for_file: prefer_const_constructors
+>>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
