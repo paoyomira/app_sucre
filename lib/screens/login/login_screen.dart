@@ -39,7 +39,7 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
-
+    String? errorMessage;
     return Form(
       key: loginForm.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -78,6 +78,11 @@ class _LoginForm extends StatelessWidget {
                   : 'La contraseña debe de ser de 6 caracteres';
             },
           ),
+          SizedBox(height: 10),
+          // Text(
+          //   'Esto es un texto',
+          //   style: TextStyle(color: Colors.red),
+          // ),
           SizedBox(height: 30),
           MaterialButton(
               shape: RoundedRectangleBorder(
@@ -103,15 +108,16 @@ class _LoginForm extends StatelessWidget {
                       loginForm.isLoading = true;
 
                       // TODO: validar si el login es correcto
-                      final String? errorMessage = await authService.loginUser(
+                      errorMessage = await authService.loginUser(
                           loginForm.email, loginForm.password);
-
+                      print(errorMessage);
                       if (errorMessage == null) {
                         Navigator.pushReplacementNamed(context, 'home');
                       } else {
                         // TODO: mostrar error en pantalla
+                        print('TODO: mostrar error en pantalla');
 
-                        NotificationProvider.showSnackbar(errorMessage);
+                        // NotificationProvider.showSnackbar(errorMessage);
                         loginForm.isLoading = false;
                       }
                     })
