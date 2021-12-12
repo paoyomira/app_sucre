@@ -15,48 +15,16 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(title: const Text('Inicio')),
         drawer: const MenuWidget(),
         body: Table(
-          children: [
+          children: const [
             TableRow(children: [
-              _HomeCard(),
-              _HomeCard(),
+              HomeCardWidget(),
+              HomeCardWidget(),
             ]),
             TableRow(children: [
-              _HomeCard(),
-              _HomeCard(),
+              HomeCardWidget(),
+              HomeCardWidget(),
             ]),
           ],
         ));
-  }
-}
-
-class _HomeCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      height: 180,
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          CircleAvatar(
-            backgroundColor: Colors.blue,
-            child: Icon(
-              Icons.pie_chart_outline_rounded,
-              size: 35,
-            ),
-            radius: 30,
-          ),
-          SizedBox(height: 10),
-          Text(
-            'General',
-            style: TextStyle(color: Colors.black, fontSize: 18),
-          )
-        ],
-      ),
-    );
   }
 }
