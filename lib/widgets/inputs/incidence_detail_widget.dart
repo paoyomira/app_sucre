@@ -16,12 +16,12 @@ class _IncidenceDetailWidgetState extends State<IncidenceDetailWidget> {
 
     List<DropdownMenuItem<String>> getopciones() {
       List<DropdownMenuItem<String>> lista = [];
-      _poderes.forEach((poder) {
+      for (var poder in _poderes) {
         lista.add(DropdownMenuItem(
           child: Text(poder),
           value: poder,
         ));
-      });
+      }
       return lista;
     }
 

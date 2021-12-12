@@ -20,10 +20,6 @@ class HomeScreen extends StatelessWidget {
               HomeCardWidget(),
               HomeCardWidget(),
             ]),
-            TableRow(children: [
-              HomeCardWidget(),
-              HomeCardWidget(),
-            ]),
           ],
         ));
   }

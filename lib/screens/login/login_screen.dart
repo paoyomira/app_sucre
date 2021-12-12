@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/services/app_services/authapi_service.dart';
 import 'package:app_sucre/ui/input_decorations.dart';
@@ -16,19 +15,19 @@ class LoginScreen extends StatelessWidget {
             child: SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 250),
+          const SizedBox(height: 250),
           CardContainerWidget(
               child: Column(
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text('Ingresar', style: Theme.of(context).textTheme.headline4),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               ChangeNotifierProvider(
                   create: (_) => LoginFormProvider(), child: _LoginForm())
             ],
           )),
-          SizedBox(height: 50),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
+          const SizedBox(height: 50),
         ],
       ),
     )));
@@ -62,7 +61,7 @@ class _LoginForm extends StatelessWidget {
                   : 'La cédula debe tener 10 dígitos';
             },
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           TextFormField(
             autocorrect: false,
             obscureText: true,
@@ -78,7 +77,7 @@ class _LoginForm extends StatelessWidget {
             //       : 'La contraseña debe de ser de 6 caracteres';
             // },
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           MaterialButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -86,10 +85,11 @@ class _LoginForm extends StatelessWidget {
               elevation: 0,
               color: Colors.deepPurple,
               child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                   child: Text(
                     loginForm.isLoading ? 'Espere' : 'Ingresar',
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   )),
               onPressed: loginForm.isLoading
                   ? null

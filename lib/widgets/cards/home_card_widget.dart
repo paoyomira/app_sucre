@@ -14,8 +14,8 @@ class HomeCardWidget extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          CircleAvatar(
+        children: [
+          const CircleAvatar(
             backgroundColor: Colors.blue,
             child: Icon(
               Icons.pie_chart_outline_rounded,
@@ -24,10 +24,11 @@ class HomeCardWidget extends StatelessWidget {
             radius: 30,
           ),
           SizedBox(height: 10),
-          Text(
-            'Incidencias',
-            style: TextStyle(color: Colors.black, fontSize: 18),
-          )
+          TextButton(
+            child: const Text('Incidencias',
+                style: TextStyle(color: Colors.black, fontSize: 18)),
+            onPressed: () {},
+          ),
         ],
       ),
     );
