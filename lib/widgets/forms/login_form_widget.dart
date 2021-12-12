@@ -1,23 +1,14 @@
-<<<<<<< HEAD
 import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/services/services.dart';
 import 'package:app_sucre/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-=======
-// Importaciones Flutter
-import 'package:flutter/material.dart';
-
-// Importaciones Aplicación
-import 'package:app_sucre/widgets/widgets.dart';
->>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
 
 class LoginForm extends StatelessWidget {
   const LoginForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final loginForm = Provider.of<LoginFormProvider>(context);
 
     return Container(
@@ -97,21 +88,6 @@ class LoginForm extends StatelessWidget {
                       })
           ],
         ),
-=======
-    return Form(
-      child: Column(
-        children: const [
-          TextInputWidget(
-              hintText: "Usuario",
-              labelText: "Usuario",
-              inputType: TextInputType.emailAddress,
-              iconData: Icons.lock_rounded),
-          PasswordInputWidget(hintText: 'Contraseña', labelText: 'Contraseña'),
-          SizedBox(height: 30),
-          SizedBox(height: 60),
-          UserLoginButton(),
-        ],
->>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
       ),
     );
   }

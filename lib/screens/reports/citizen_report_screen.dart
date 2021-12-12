@@ -34,49 +34,4 @@ class _CitizenReportScreenState extends State<CitizenReportScreen> {
       ),
     );
   }
-<<<<<<< HEAD
-
-  Widget _crearInput() {
-    return TextField(
-      // autofocus: true,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        hintText: 'Nombre',
-        labelText: 'Nombre',
-        suffixIcon: const Icon(Icons.accessibility),
-        icon: const Icon(Icons.account_circle),
-      ),
-      onChanged: (valor) {
-        _nombre = valor;
-        setState(() {});
-      },
-    );
-  }
-
-  Widget _citizenReport() {
-    return TextFormField(
-      // autofocus: true,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        hintText: 'Nombre',
-        labelText: 'Nombre',
-        suffixIcon: const Icon(Icons.accessibility),
-        icon: const Icon(Icons.account_circle),
-      ),
-      onChanged: (valor) {
-        _nombre = valor;
-        setState(() {
-          print(_nombre);
-        });
-      },
-    );
-  }
-=======
->>>>>>> 3b5b350da0f0c8da6c34918bdf5d22e9bc028661
 }
