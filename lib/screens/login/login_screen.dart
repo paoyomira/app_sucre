@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// Importaciones Flutter
 import 'package:flutter/material.dart';
-import 'package:app_sucre/screens/home/home_screen.dart';
-import 'package:app_sucre/screens/home/initial_screen.dart';
+
+// Importaciones Aplicación
 import 'package:app_sucre/widgets/widgets.dart';
+import 'package:app_sucre/screens/screens.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -35,28 +36,11 @@ class LoginScreen extends StatelessWidget {
           SizedBox(height: 100),
           LoginForm(),
           SizedBox(height: 50),
-          _textRow(),
+          CreatAccountWidget(),
         ],
       ),
     ));
   }
 }
 
-Widget _textRow() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: const [
-      Text('¿No tienes una cuenta?',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          )),
-      Text('Crear Cuenta',
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Color(0xff00D4CE))),
-    ],
-  );
-}
+// ignore_for_file: prefer_const_constructors

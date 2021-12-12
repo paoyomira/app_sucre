@@ -35,7 +35,7 @@ class App extends StatelessWidget {
         'home': (BuildContext context) => const HomeScreen(),
         'register': (BuildContext context) => const RegisterScreen(),
         'incidents': (BuildContext context) => const IncidentsScreen(),
-        'citizenreport': (BuildContext context) => const citizenReportScreen(),
+        'citizenreport': (BuildContext context) => const CitizenReportScreen(),
         'initial': (BuildContext context) => const InitialScreen(),
         'latestreports': (BuildContext context) => const LatestReportsScreen(),
       },
