@@ -1,5 +1,5 @@
-import 'package:app_sucre/providers/external_providers/apiservices_provider.dart';
 import 'package:app_sucre/screens/screens.dart';
+import 'package:app_sucre/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +12,10 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ApiServicesProvider(),
+          create: (_) => ApiService(),
           lazy: false,
-        )
+        ),
+        ChangeNotifierProvider(create: (_) => AuthService())
       ],
       child: const App(),
     );
@@ -29,8 +30,9 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App Sucre',
-      initialRoute: 'login',
+      initialRoute: 'checkin',
       routes: {
+        'checkin': (BuildContext context) => const CheckAuthScreen(),
         'login': (BuildContext context) => const LoginScreen(),
         'home': (BuildContext context) => const HomeScreen(),
         'register': (BuildContext context) => const RegisterScreen(),

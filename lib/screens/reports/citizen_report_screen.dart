@@ -48,9 +48,7 @@ class _CitizenReportScreenState extends State<citizenReportScreen> {
       ),
       onChanged: (valor) {
         _nombre = valor;
-        setState(() {
-          print(_nombre);
-        });
+        setState(() {});
       },
     );
   }
