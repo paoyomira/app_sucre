@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:flutter/material.dart';
 import 'package:app_sucre/screens/home/home_screen.dart';
 import 'package:app_sucre/screens/home/initial_screen.dart';
-import 'package:app_sucre/ui/input_decorations.dart';
-import 'package:flutter/material.dart';
+import 'package:app_sucre/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -34,39 +33,13 @@ class LoginScreen extends StatelessWidget {
           Text('Inicia sesión para continuar',
               style: Theme.of(context).textTheme.headline6),
           SizedBox(height: 100),
-          _LoginForm(),
+          LoginForm(),
           SizedBox(height: 50),
           _textRow(),
         ],
       ),
     ));
   }
-}
-
-Widget _buttonLogin(BuildContext context) {
-  return TextButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(
-            left: 100.0, top: 15.0, right: 100.0, bottom: 15.0),
-        child: Text(
-          'Ingresar',
-          style: TextStyle(
-              color: Color(0xff00D4CE), fontSize: 25.0, fontFamily: "Raleway"),
-        ),
-      ),
-      style: TextButton.styleFrom(
-          elevation: 10.0,
-          shadowColor: Colors.black,
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          )));
 }
 
 Widget _textRow() {
@@ -86,42 +59,4 @@ Widget _textRow() {
               color: Color(0xff00D4CE))),
     ],
   );
-}
-
-class _LoginForm extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecorations.authInputDecoration(
-              hintText: 'Correo',
-              labelText: 'Correo',
-              prefixIcon: Icons.person_rounded,
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          TextFormField(
-            autocorrect: false,
-            obscureText: true,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecorations.authInputDecoration(
-              hintText: 'Contraseña',
-              labelText: 'Contraseña',
-              prefixIcon: Icons.lock_rounded,
-            ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          _buttonLogin(context),
-        ],
-      ),
-    );
-  }
 }
