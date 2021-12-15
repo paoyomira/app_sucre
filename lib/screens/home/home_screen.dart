@@ -14,13 +14,38 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text('Inicio')),
         drawer: const MenuWidget(),
-        body: Table(
-          children: const [
-            TableRow(children: [
-              HomeCardWidget(),
-              HomeCardWidget(),
-            ]),
+        body: ListView(
+          children: [
+            Table(
+              children: [
+                TableRow(children: [
+                  HomeText(),
+                ]),
+                TableRow(children: [
+                  HomeCardWidget(),
+                ]),
+                TableRow(children: [
+                  HomeCardWidget(),
+                ]),
+                TableRow(children: [
+                  HomeCardWidget(),
+                ]),
+              ],
+            )
           ],
         ));
   }
+}
+
+Widget HomeText() {
+  return Container(
+    child: Column(
+      children: [
+        Text('Hola Eduardo'),
+        SizedBox(height: 10.0),
+        Text('Bienvenido al Portal de Incidencias'),
+        SizedBox(height: 10.0),
+      ],
+    ),
+  );
 }

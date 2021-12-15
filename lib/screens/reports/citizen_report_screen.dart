@@ -22,30 +22,30 @@ class _CitizenReportScreenState extends State<CitizenReportScreen> {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         children: [
-          Text('Reportar Incidencia'),
-          SizedBox(
+          const Text('Reportar Incidencia'),
+          const SizedBox(
             height: 20.0,
           ),
-          IncidenceDetailWidget(),
-          SizedBox(
+          const IncidenceDetailWidget(),
+          const SizedBox(
             height: 20.0,
           ),
-          IncidenceDescriptionWidget(),
-          SizedBox(
+          const IncidenceDescriptionWidget(),
+          const SizedBox(
             height: 20.0,
           ),
-          Text('Fotos Evidencia'),
-          SizedBox(
+          const Text('Fotos Evidencia'),
+          const SizedBox(
             height: 20.0,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
-          TextButton(onPressed: () {}, child: Text('Tomar Fotografia')),
-          SizedBox(
+          TextButton(onPressed: () {}, child: const Text('Tomar Fotografia')),
+          const SizedBox(
             height: 20.0,
           ),
-          EvidencePhotosButtonWidget(),
+          const EvidencePhotosButtonWidget(),
         ],
       ),
     );
