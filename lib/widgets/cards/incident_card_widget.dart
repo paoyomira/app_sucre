@@ -1,8 +1,12 @@
+import 'package:app_sucre/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:app_sucre/screens/screens.dart';
 
 class IncidentCardWidget extends StatelessWidget {
-  const IncidentCardWidget({Key? key}) : super(key: key);
+  final IncidentsTypeResponse incidentsType;
+
+  const IncidentCardWidget({Key? key, required this.incidentsType})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +15,9 @@ class IncidentCardWidget extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const ListTile(
-              title: Text('Incidencia # 1'),
-              subtitle: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla metus, tempor ut metus vel, varius gravida ligula. Morbi nec cursus magna. '),
+            ListTile(
+              title: Text(incidentsType.name),
+              subtitle: Text(incidentsType.descripcion),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
