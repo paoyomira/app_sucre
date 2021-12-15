@@ -18,7 +18,6 @@ class _CitizenReportScreenState extends State<CitizenReportScreen> {
       appBar: AppBar(
         title: const Text('Reporte Ciudadano'),
       ),
-      drawer: const MenuWidget(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         children: [

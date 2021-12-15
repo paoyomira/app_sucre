@@ -14,38 +14,108 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text('Inicio')),
         drawer: const MenuWidget(),
-        body: ListView(
-          children: [
-            Table(
-              children: [
-                TableRow(children: [
-                  HomeText(),
-                ]),
-                TableRow(children: [
-                  HomeCardWidget(),
-                ]),
-                TableRow(children: [
-                  HomeCardWidget(),
-                ]),
-                TableRow(children: [
-                  HomeCardWidget(),
-                ]),
-              ],
-            )
-          ],
+        body: Container(
+          child: ListView(
+            children: [
+              HomeAvatar(),
+              HomeText(),
+              HomeTextFinal(),
+              Table(
+                children: const [
+                  TableRow(children: [
+                    HomeCardWidget(),
+                    HomeCardWidget(),
+                  ]),
+                ],
+              ),
+              OutHomButton(),
+            ],
+          ),
         ));
   }
 }
 
 Widget HomeText() {
   return Container(
+    padding: EdgeInsets.all(30),
     child: Column(
-      children: [
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        SizedBox(height: 20.0),
         Text('Hola Eduardo'),
-        SizedBox(height: 10.0),
+        SizedBox(height: 20.0),
         Text('Bienvenido al Portal de Incidencias'),
-        SizedBox(height: 10.0),
       ],
     ),
+  );
+}
+
+Widget HomeTextFinal() {
+  return Container(
+    padding: EdgeInsets.all(30),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: const [
+        Text('¿Qué deseas hacer?'),
+      ],
+    ),
+  );
+}
+
+Widget HomeAvatar() {
+  return Stack(
+    clipBehavior: Clip.none,
+    children: [
+      Container(
+          height: 120,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/img/home.png'),
+            fit: BoxFit.fill,
+          ))),
+      Positioned(
+          bottom: -20,
+          left: 200,
+          right: 0,
+          child: Center(
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/img/programmer.jpg'),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.all(Radius.circular(52.0))),
+            ),
+          ))
+    ],
+  );
+}
+
+Widget OutHomButton() {
+  return Container(
+    padding: EdgeInsets.all(20),
+    child: TextButton(
+        onPressed: () {},
+        child: const Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Text(
+            'Salir',
+            style: TextStyle(
+              color: Color(0xff00D4CE),
+              fontSize: 25.0,
+            ),
+          ),
+        ),
+        style: TextButton.styleFrom(
+            elevation: 10.0,
+            shadowColor: Colors.black,
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ))),
   );
 }

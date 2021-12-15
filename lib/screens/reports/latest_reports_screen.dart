@@ -11,7 +11,6 @@ class LatestReportsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Últimos Reportes')),
-        drawer: const MenuWidget(),
         body: Container(
             color: const Color(0xffF8FAFB),
             padding: const EdgeInsets.all(20.0),
