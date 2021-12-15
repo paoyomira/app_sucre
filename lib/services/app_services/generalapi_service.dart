@@ -11,38 +11,74 @@ import 'package:http/http.dart' as http;
 class ApiService extends ChangeNotifier {
   final String _baseUrl = dotenv.env['API_URL'] ?? '';
   final _storage = const FlutterSecureStorage();
+  Map<String, String> _requestHeaders = {};
+
   List<IncidentsTypeResponse> incidentsTypes = [];
+  List<IncidentsResponse> incidents = [];
+  List<ReportResponse> reports = [];
+  List<SearchIncidentsTypeResponse> incidentsSearch = [];
+
   ApiService() {
-    // Do Nothing, just Constructor!
+    _readToken();
     getIncidentTypes();
   }
 
-  getIncidentTypes() async {
-    final token = 'Bearer ' + await _readToken();
-    Map<String, String> requestHeaders = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': token
-    };
+  getIncidents() async {
+    final url = Uri.https(_baseUrl, '/api/listar-incidencia');
+    final response = await http.get(url, headers: _requestHeaders);
+    incidents = jsonDecode(response.body)
+        .cast<Map<String, dynamic>>()
+        .map<IncidentsResponse>((json) => IncidentsResponse.fromJsonList(json))
+        .toList();
 
-    final url = Uri.https(_baseUrl, '/api/listar-tipo-incidencia');
-    final response = await http.get(url, headers: requestHeaders);
-    print('response vea patron');
-    incidentsTypes = _parseList(response.body);
-    print(incidentsTypes);
     notifyListeners();
   }
 
-  List<IncidentsTypeResponse> _parseList(String responseBody) {
-    final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-    return parsed
+  getIncidentTypes() async {
+    final url = Uri.https(_baseUrl, '/api/listar-tipo-incidencia');
+    final response = await http.get(url, headers: _requestHeaders);
+    var responseJson = jsonDecode(response.body);
+    print(responseJson);
+    incidentsTypes = responseJson
+        .cast<Map<String, dynamic>>()
         .map<IncidentsTypeResponse>(
             (json) => IncidentsTypeResponse.fromJsonList(json))
         .toList();
+
+    notifyListeners();
   }
 
-  Future<String> _readToken() async {
-    return await _storage.read(key: 'token') ?? '';
+  getReports() async {
+    final url = Uri.https(_baseUrl, 'api/listar-reporte-incidencia-fecha');
+    final response = await http.get(url, headers: _requestHeaders);
+
+    reports = jsonDecode(response.body)
+        .cast<Map<String, dynamic>>()
+        .map<ReportResponse>((json) => ReportResponse.fromJsonList(json))
+        .toList();
+
+    notifyListeners();
+  }
+
+  getIncidentsSearch() async {
+    final url = Uri.https(_baseUrl, 'api/buscar-incidencia-por-tipo');
+    final response = await http.get(url, headers: _requestHeaders);
+
+    incidentsSearch = jsonDecode(response.body)
+        .cast<Map<String, dynamic>>()
+        .map<SearchIncidentsTypeResponse>(
+            (json) => SearchIncidentsTypeResponse.fromJsonList(json))
+        .toList();
+
+    notifyListeners();
+  }
+
+  _readToken() async {
+    final String token = await _storage.read(key: 'token') ?? '';
+    _requestHeaders = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + token
+    };
   }
 }

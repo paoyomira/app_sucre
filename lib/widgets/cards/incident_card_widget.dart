@@ -1,5 +1,8 @@
-import 'package:app_sucre/models/models.dart';
+// Importaciones Flutter
 import 'package:flutter/material.dart';
+
+// Importaciones Aplicación
+import 'package:app_sucre/models/models.dart';
 import 'package:app_sucre/screens/screens.dart';
 
 class IncidentCardWidget extends StatelessWidget {

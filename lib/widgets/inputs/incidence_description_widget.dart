@@ -1,8 +1,13 @@
 // Importaciones Flutter
 import 'package:flutter/material.dart';
 
+// Importaciones Aplicación
+import 'package:app_sucre/models/models.dart';
+
 class IncidenceDescriptionWidget extends StatelessWidget {
-  const IncidenceDescriptionWidget({Key? key}) : super(key: key);
+  final IncidentsResponse incident;
+  const IncidenceDescriptionWidget({Key? key, required this.incident})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -20,7 +20,7 @@ class AppState extends StatelessWidget {
           create: (_) => ApiService(),
           lazy: false,
         ),
-        ChangeNotifierProvider(create: (_) => AuthService())
+        // ChangeNotifierProvider(create: (_) => AuthService())
       ],
       child: const App(),
     );
