@@ -18,8 +18,8 @@ class EvidencePhotosButtonWidget extends StatelessWidget {
           );
         },
         child: const Padding(
-          padding: EdgeInsets.only(
-              left: 100.0, top: 15.0, right: 100.0, bottom: 15.0),
+          padding:
+              EdgeInsets.only(left: 25.0, top: 15.0, right: 25.0, bottom: 15.0),
           child: Text(
             'Reportar Incidencia',
             style: TextStyle(color: Colors.white, fontSize: 25.0),

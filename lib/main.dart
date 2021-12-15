@@ -2,9 +2,13 @@ import 'package:app_sucre/providers/app_providers/notification_provider.dart';
 import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(const AppState());
+Future<void> main() async {
+  await dotenv.load();
+  runApp(const AppState());
+}
 
 class AppState extends StatelessWidget {
   const AppState({Key? key}) : super(key: key);

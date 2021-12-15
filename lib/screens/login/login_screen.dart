@@ -86,7 +86,7 @@ class _LoginForm extends StatelessWidget {
               color: Colors.deepPurple,
               child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                      const EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                   child: Text(
                     loginForm.isLoading ? 'Espere' : 'Ingresar',
                     style: const TextStyle(color: Colors.white),

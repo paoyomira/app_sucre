@@ -46,7 +46,7 @@ class MenuWidget extends StatelessWidget {
                     context, IncidentsScreen.routeName);
               }),
           const SizedBox(
-            height: 400.0,
+            height: 250,
           ),
           ListTile(
             leading: const Icon(Icons.logout_rounded, color: Colors.grey),

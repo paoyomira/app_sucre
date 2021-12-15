@@ -23,6 +23,9 @@ class _CitizenReportScreenState extends State<CitizenReportScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         children: [
           Text('Reportar Incidencia'),
+          SizedBox(
+            height: 20.0,
+          ),
           IncidenceDetailWidget(),
           SizedBox(
             height: 20.0,

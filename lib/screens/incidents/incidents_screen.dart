@@ -20,7 +20,6 @@ class IncidentsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             margin: const EdgeInsets.symmetric(vertical: 6.0),
             child: ListView(
-              padding: const EdgeInsets.all(20.0),
               children: const [
                 SearchBarWidget(),
                 IncidentCardWidget(),
