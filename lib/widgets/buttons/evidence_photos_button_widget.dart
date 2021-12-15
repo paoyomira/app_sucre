@@ -1,4 +1,5 @@
 // Importaciones Flutter
+import 'package:app_sucre/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
@@ -9,12 +10,18 @@ class EvidencePhotosButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const LatestReportsScreen()),
+          );
+        },
         child: const Padding(
           padding: EdgeInsets.only(
               left: 100.0, top: 15.0, right: 100.0, bottom: 15.0),
           child: Text(
-            'Tomar Fotografía',
+            'Reportar Incidencia',
             style: TextStyle(color: Colors.white, fontSize: 25.0),
           ),
         ),

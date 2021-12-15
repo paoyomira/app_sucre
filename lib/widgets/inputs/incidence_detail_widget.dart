@@ -11,8 +11,12 @@ class IncidenceDetailWidget extends StatefulWidget {
 class _IncidenceDetailWidgetState extends State<IncidenceDetailWidget> {
   @override
   Widget build(BuildContext context) {
-    String _opcionSeleccionada = 'Orange';
-    final List<String> _poderes = ['Orange', 'watermelon', 'Pineapple'];
+    String _opcionSeleccionada = 'Robo de Auto';
+    final List<String> _poderes = [
+      'Incendio Forestal',
+      'Incendio Domestico',
+      'Robo de Auto'
+    ];
 
     List<DropdownMenuItem<String>> getopciones() {
       List<DropdownMenuItem<String>> lista = [];
@@ -30,7 +34,7 @@ class _IncidenceDetailWidgetState extends State<IncidenceDetailWidget> {
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.all(0),
       child: Row(
         children: <Widget>[
           Expanded(

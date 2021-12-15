@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_sucre/screens/screens.dart';
 
 class IncidentCardWidget extends StatelessWidget {
   const IncidentCardWidget({Key? key}) : super(key: key);
@@ -11,16 +12,22 @@ class IncidentCardWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const ListTile(
-              title: Text('The Enchanted Nightingale'),
+              title: Text('Incidencia # 1'),
               subtitle: Text(
-                  'Music by Julie Gable. Lyrics by usic by Julie Gable. Lyrics busic by Julie Gable. Lyrics busic by Julie Gable. Lyrics bSidney Stein.'),
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nulla metus, tempor ut metus vel, varius gravida ligula. Morbi nec cursus magna. '),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
                   child: const Text('Reportar'),
-                  onPressed: () {/* ... */},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CitizenReportScreen()),
+                    );
+                  },
                 ),
                 const SizedBox(width: 8),
               ],

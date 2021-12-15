@@ -21,14 +21,27 @@ class _CitizenReportScreenState extends State<CitizenReportScreen> {
       drawer: const MenuWidget(),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-        children: const [
+        children: [
           Text('Reportar Incidencia'),
           IncidenceDetailWidget(),
-          Divider(),
+          SizedBox(
+            height: 20.0,
+          ),
           IncidenceDescriptionWidget(),
-          Divider(),
+          SizedBox(
+            height: 20.0,
+          ),
           Text('Fotos Evidencia'),
-          Divider(),
+          SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          TextButton(onPressed: () {}, child: Text('Tomar Fotografia')),
+          SizedBox(
+            height: 20.0,
+          ),
           EvidencePhotosButtonWidget(),
         ],
       ),
