@@ -19,7 +19,6 @@ class ApiService extends ChangeNotifier {
   List<SearchIncidentsTypeResponse> incidentsSearch = [];
 
   ApiService() {
-    _readToken();
     getIncidentTypes();
   }
 
@@ -35,10 +34,12 @@ class ApiService extends ChangeNotifier {
   }
 
   getIncidentTypes() async {
+    await _readToken();
     final url = Uri.https(_baseUrl, '/api/listar-tipo-incidencia');
     final response = await http.get(url, headers: _requestHeaders);
+    print(_requestHeaders);
+    print('la response');
     var responseJson = jsonDecode(response.body);
-    print(responseJson);
     incidentsTypes = responseJson
         .cast<Map<String, dynamic>>()
         .map<IncidentsTypeResponse>(
@@ -46,6 +47,7 @@ class ApiService extends ChangeNotifier {
         .toList();
 
     notifyListeners();
+    return incidentsTypes;
   }
 
   getReports() async {
