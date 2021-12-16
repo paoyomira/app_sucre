@@ -1,4 +1,5 @@
 // Importaciones Flutter
+import 'package:app_sucre/screens/reports/citizen_report_screen.dart';
 import 'package:app_sucre/services/app_services/authapi_service.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,11 @@ class IncidentCardWidget extends StatelessWidget {
                 TextButton(
                   child: const Text('Reportar'),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'citizenreport');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CitizenReportScreen()),
+                    );
                   },
                 ),
                 const SizedBox(width: 8),
@@ -40,4 +45,12 @@ class IncidentCardWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget initialTextIncidents() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: const [Text('Excelente!')],
+  );
 }

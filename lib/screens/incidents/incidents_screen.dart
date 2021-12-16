@@ -18,6 +18,7 @@ class IncidentsScreen extends StatelessWidget {
         appBar: AppBar(
             // title: const Text('Incidencias'),
             ),
+        // drawer: const MenuWidget(),
         body: Container(
             color: const Color(0xffF8FAFB),
             padding: const EdgeInsets.all(20.0),

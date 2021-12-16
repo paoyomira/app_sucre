@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_sucre/services/services.dart';
-import 'package:provider/provider.dart';
 
 class HomeCardWidget extends StatelessWidget {
   final Widget url;
