@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:app_sucre/models/models.dart';
 
 class IncidenceDetailWidget extends StatefulWidget {
-  final IncidentsResponse incident;
-  const IncidenceDetailWidget({Key? key, required this.incident})
-      : super(key: key);
+  const IncidenceDetailWidget({Key? key}) : super(key: key);
 
   @override
   _IncidenceDetailWidgetState createState() => _IncidenceDetailWidgetState();
