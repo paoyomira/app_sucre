@@ -21,17 +21,21 @@ class ApiService extends ChangeNotifier {
   ApiService() {
     getIncidentTypes();
     getReports();
+    getIncidents();
   }
 
   getIncidents() async {
+    await _readToken();
     final url = Uri.https(_baseUrl, '/api/listar-incidencia');
     final response = await http.get(url, headers: _requestHeaders);
-    incidents = jsonDecode(response.body)
+    var responseJson = jsonDecode(response.body);
+    incidents = responseJson
         .cast<Map<String, dynamic>>()
         .map<IncidentsResponse>((json) => IncidentsResponse.fromJsonList(json))
         .toList();
 
     notifyListeners();
+    return incidents;
   }
 
   getIncidentTypes() async {
