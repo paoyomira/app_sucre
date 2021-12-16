@@ -11,14 +11,27 @@ class IncidenceDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autofocus: true,
+      minLines: 2,
+      maxLines: 6,
+      // autofocus: true,
       decoration: InputDecoration(
+        hintText: 'Descripción del Reporte',
+        labelText: 'Descripción',
+        hoverColor: Colors.white,
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color(0xff24d7ca), width: 2.0),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        fillColor: Colors.white,
+        filled: true,
+        floatingLabelStyle: TextStyle(
+          color: Colors.black87,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        hintText: 'Descripcion de la incidencia',
-        labelText: 'Descripción',
-        suffixIcon: const Icon(Icons.description_rounded),
+
+        // suffixIcon: const Icon(Icons.description_outlined),
       ),
       onChanged: (valor) {},
     );

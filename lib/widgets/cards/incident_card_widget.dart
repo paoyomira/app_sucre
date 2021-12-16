@@ -1,11 +1,9 @@
 // Importaciones Flutter
 import 'package:app_sucre/screens/reports/citizen_report_screen.dart';
-import 'package:app_sucre/services/app_services/authapi_service.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
 import 'package:app_sucre/models/models.dart';
-import 'package:provider/provider.dart';
 
 class IncidentCardWidget extends StatelessWidget {
   final IncidentsTypeResponse incidentsType;
@@ -17,6 +15,8 @@ class IncidentCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        shadowColor: Colors.black87,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -27,15 +27,22 @@ class IncidentCardWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                TextButton(
-                  child: const Text('Reportar'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CitizenReportScreen()),
-                    );
-                  },
+                Container(
+                  padding: EdgeInsets.all(15.0),
+                  child: TextButton(
+                    child: const Text(
+                      'Reportar',
+                      style:
+                          TextStyle(color: Color(0xff00D4CE), fontSize: 20.0),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CitizenReportScreen()),
+                      );
+                    },
+                  ),
                 ),
                 const SizedBox(width: 8),
               ],

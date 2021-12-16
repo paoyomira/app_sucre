@@ -35,8 +35,10 @@ class HomeCardWidget extends StatelessWidget {
                 child: Icon(
                   icon,
                   size: 35,
+                  color: Color(0xffd7e5da),
                 ),
                 radius: 30,
+                backgroundColor: Color(0xff43c39d),
               ),
               const SizedBox(height: 30),
               Text(textButton,

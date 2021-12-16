@@ -59,7 +59,7 @@ class ApiService extends ChangeNotifier {
       'fechadesde': DateTime.now().add(const Duration(days: -30)).toString(),
       'fechahasta': DateTime.now().toString()
     };
-    print(dateRange);
+    // print(dateRange);
 
     final url =
         Uri.https(_baseUrl, 'api/listar-reporte-incidencia-fecha', dateRange);
@@ -71,8 +71,8 @@ class ApiService extends ChangeNotifier {
         .toList();
 
     notifyListeners();
-    print('reports');
-    print(reports);
+    // print('reports');
+    // print(reports);
     return reports;
   }
 

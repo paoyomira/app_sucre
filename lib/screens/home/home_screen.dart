@@ -18,36 +18,34 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text('Inicio')),
         drawer: const MenuWidget(),
-        body: Container(
-          child: ListView(
-            children: [
-              HomeAvatar(),
-              HomeText(),
-              HomeTextFinal(),
-              Table(
-                children: const [
-                  TableRow(children: [
-                    HomeCardWidget(
-                        url: IncidentsScreen(),
-                        textButton: 'Hacer un Reporte',
-                        icon: Icons.rounded_corner),
-                    HomeCardWidget(
-                        url: LatestReportsScreen(),
-                        textButton: 'Mis reportes',
-                        icon: Icons.rounded_corner),
-                  ]),
-                ],
-              ),
-              OutHomeButton(),
-            ],
-          ),
+        body: ListView(
+          children: [
+            HomeAvatar(),
+            HomeText(),
+            HomeTextFinal(),
+            Table(
+              children: const [
+                TableRow(children: [
+                  HomeCardWidget(
+                      url: IncidentsScreen(),
+                      textButton: 'Hacer un Reporte',
+                      icon: Icons.source_rounded),
+                  HomeCardWidget(
+                      url: LatestReportsScreen(),
+                      textButton: 'Mis reportes',
+                      icon: Icons.folder_rounded),
+                ]),
+              ],
+            ),
+            const OutHomeButton(),
+          ],
         ));
   }
 }
 
 Widget HomeText() {
   return Container(
-    padding: EdgeInsets.all(30),
+    padding: const EdgeInsets.all(30),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +61,7 @@ Widget HomeText() {
 
 Widget HomeTextFinal() {
   return Container(
-    padding: EdgeInsets.all(30),
+    padding: const EdgeInsets.all(30),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -112,7 +110,7 @@ class OutHomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: TextButton(
           onPressed: () {
             authService.logout();

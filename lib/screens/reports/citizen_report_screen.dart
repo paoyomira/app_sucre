@@ -2,7 +2,6 @@
 import 'package:app_sucre/models/models.dart';
 import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/services/services.dart';
-import 'package:app_sucre/ui/input_decorations.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
@@ -33,49 +32,106 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
         appBar: AppBar(
           title: const Text('Reporte Ciudadano'),
         ),
-        body: Form(
-            key: reportForm.formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      borderRadius: BorderRadius.circular(12)),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  margin: const EdgeInsets.all(0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButtonFormField(
-                              value: reportForm.selectedOption,
-                              items: lista,
-                              isExpanded: true,
-                              onChanged: (opt) {
-                                setState(() {
-                                  reportForm.selectedOption =
-                                      opt as IncidentsResponse?;
-                                });
-                              }),
-                        ),
-                      )
-                    ],
+        body: Container(
+          color: const Color(0xffF8FAFB),
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+              key: reportForm.formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 20.0,
                   ),
-                ),
-                const SizedBox(height: 20.0),
-                const IncidenceDescriptionWidget(),
-                const SizedBox(height: 20.0),
-              ],
-            )));
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(12)),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                    margin: const EdgeInsets.all(0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButtonFormField(
+                                value: reportForm.selectedOption,
+                                decoration: const InputDecoration(
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    labelText: 'Tipo de Reporte',
+                                    enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xffF8FAFB)))),
+                                items: lista,
+                                isExpanded: true,
+                                onChanged: (opt) {
+                                  setState(() {
+                                    reportForm.selectedOption =
+                                        opt as IncidentsResponse?;
+                                  });
+                                }),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30.0),
+                  TextFormField(
+                    minLines: 2,
+                    onChanged: (value) => reportForm.description = value,
+                    validator: (value) {
+                      return (value != null && value.length >= 6)
+                          ? null
+                          : 'Por lo menos 6 caracteres';
+                    },
+                    maxLines: 6,
+                    // autofocus: true,
+                    decoration: InputDecoration(
+                      hintText: 'Descripción del Reporte',
+                      labelText: 'Descripción',
+                      hoverColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            color: Color(0xff24d7ca), width: 2.0),
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      floatingLabelStyle: TextStyle(
+                        color: Colors.black87,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      // suffixIcon: const Icon(Icons.description_outlined),
+                    ),
+                    // onChanged: (valor) {},
+                  ),
+                  const SizedBox(height: 20.0),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  EvidencePhotosButtonWidget(),
+                ],
+              )),
+        ));
     // Form(
     // key: reportForm.formKey,
     // autovalidateMode: AutovalidateMode.onUserInteraction,
     // child:));
+  }
+
+  Widget evidence() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        SizedBox(height: 20.0),
+        Text('Evidencia Fotográfica'),
+      ],
+    );
   }
 }
 // class CitizenReportScreen extends StatelessWidget {

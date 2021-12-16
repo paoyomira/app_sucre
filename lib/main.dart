@@ -46,10 +46,14 @@ class App extends StatelessWidget {
         'latestreports': (BuildContext context) => const LatestReportsScreen(),
       },
       scaffoldMessengerKey: NotificationProvider.messengerKey,
-      theme: ThemeData(fontFamily: 'Raleway'),
-      // theme: ThemeData.light().copyWith(
-      //   scaffoldBackgroundColor: Colors.white,
-      // ),
+      theme: ThemeData(
+          fontFamily: 'Raleway',
+          appBarTheme: AppBarTheme(
+            color: const Color(0xFF43c39d),
+          )),
     );
+    // theme: ThemeData.light().copyWith(
+    //   scaffoldBackgroundColor: Colors.white,
+    // ),
   }
 }

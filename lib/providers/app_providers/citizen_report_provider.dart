@@ -8,6 +8,7 @@ class CitizerReportFormProvider extends ChangeNotifier {
   String email = '';
   String password = '';
   IncidentsResponse? selectedOption;
+  String description = '';
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;

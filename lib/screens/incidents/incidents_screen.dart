@@ -16,13 +16,13 @@ class IncidentsScreen extends StatelessWidget {
     // apiService.getIncidentTypes();
     return Scaffold(
         appBar: AppBar(
-            // title: const Text('Incidencias'),
-            ),
+          title: const Text('Incidencias'),
+        ),
         // drawer: const MenuWidget(),
         body: Container(
             color: const Color(0xffF8FAFB),
             padding: const EdgeInsets.all(20.0),
-            margin: const EdgeInsets.symmetric(vertical: 6.0),
+            margin: const EdgeInsets.symmetric(vertical: 16.0),
             child: ListView.builder(
                 itemCount: apiService.incidentsTypes.length,
                 scrollDirection: Axis.vertical,
