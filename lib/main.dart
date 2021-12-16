@@ -1,4 +1,5 @@
 import 'package:app_sucre/providers/app_providers/notification_provider.dart';
+import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/screens/screens.dart';
 import 'package:app_sucre/services/services.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,8 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ApiService()),
-        ChangeNotifierProvider(create: (_) => AuthService())
+        ChangeNotifierProvider(create: (_) => AuthService()),
+        ChangeNotifierProvider(create: (_) => CitizerReportFormProvider())
       ],
       child: const App(),
     );
