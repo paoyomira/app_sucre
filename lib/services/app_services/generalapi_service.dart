@@ -20,6 +20,7 @@ class ApiService extends ChangeNotifier {
 
   ApiService() {
     getIncidentTypes();
+    getReports();
   }
 
   getIncidents() async {
@@ -37,8 +38,6 @@ class ApiService extends ChangeNotifier {
     await _readToken();
     final url = Uri.https(_baseUrl, '/api/listar-tipo-incidencia');
     final response = await http.get(url, headers: _requestHeaders);
-    print(_requestHeaders);
-    print('la response');
     var responseJson = jsonDecode(response.body);
     incidentsTypes = responseJson
         .cast<Map<String, dynamic>>()
@@ -51,15 +50,25 @@ class ApiService extends ChangeNotifier {
   }
 
   getReports() async {
-    final url = Uri.https(_baseUrl, 'api/listar-reporte-incidencia-fecha');
-    final response = await http.get(url, headers: _requestHeaders);
+    await _readToken();
 
-    reports = jsonDecode(response.body)
+    final Map<String, dynamic> dateRange = {
+      'fechadesde': '2021-10-14', //email,
+      'fechahasta': '2021-11-18' // password
+    };
+    final url =
+        Uri.https(_baseUrl, 'api/listar-reporte-incidencia-fecha', dateRange);
+    final response = await http.get(url, headers: _requestHeaders);
+    var responseJson = jsonDecode(response.body);
+    reports = responseJson
         .cast<Map<String, dynamic>>()
         .map<ReportResponse>((json) => ReportResponse.fromJsonList(json))
         .toList();
 
     notifyListeners();
+    print('reports');
+    print(reports);
+    return reports;
   }
 
   getIncidentsSearch() async {
