@@ -51,11 +51,12 @@ class ApiService extends ChangeNotifier {
 
   getReports() async {
     await _readToken();
-
     final Map<String, dynamic> dateRange = {
-      'fechadesde': '2021-10-14', //email,
-      'fechahasta': '2021-11-18' // password
+      'fechadesde': DateTime.now().add(const Duration(days: -30)).toString(),
+      'fechahasta': DateTime.now().toString()
     };
+    print(dateRange);
+
     final url =
         Uri.https(_baseUrl, 'api/listar-reporte-incidencia-fecha', dateRange);
     final response = await http.get(url, headers: _requestHeaders);

@@ -30,7 +30,3 @@ class IncidentsScreen extends StatelessWidget {
                     incidentsType: apiService.incidentsTypes[index]))));
   }
 }
-// ListView.builder(
-//                 scrollDirection: Axis.vertical,
-//                 itemBuilder: (_, int index) => IncidentCardWidget(
-//                     incidentsType: apiService.incidentsTypes[index]))

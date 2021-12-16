@@ -25,8 +25,14 @@ class HomeScreen extends StatelessWidget {
               Table(
                 children: const [
                   TableRow(children: [
-                    HomeCardWidget(),
-                    HomeCardWidget(),
+                    HomeCardWidget(
+                        url: 'incidents',
+                        textButton: 'Hacer un Reporte',
+                        icon: Icons.rounded_corner),
+                    HomeCardWidget(
+                        url: 'latestreports',
+                        textButton: 'Mis reportes',
+                        icon: Icons.rounded_corner),
                   ]),
                 ],
               ),
