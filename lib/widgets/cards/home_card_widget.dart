@@ -1,15 +1,17 @@
-import 'package:app_sucre/screens/incidents/incidents_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:app_sucre/services/services.dart';
+import 'package:provider/provider.dart';
 
 class HomeCardWidget extends StatelessWidget {
   const HomeCardWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context, listen: false);
     return GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => IncidentsScreen()));
+          authService;
+          Navigator.pushReplacementNamed(context, 'incidents');
         },
         child: Container(
           margin: const EdgeInsets.all(15),

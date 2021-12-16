@@ -1,8 +1,10 @@
 // Importaciones Flutter
+import 'package:app_sucre/services/app_services/authapi_service.dart';
 import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
 import 'package:app_sucre/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/';
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                   ]),
                 ],
               ),
-              OutHomButton(),
+              OutHomeButton(),
             ],
           ),
         ));
@@ -95,27 +97,36 @@ Widget HomeAvatar() {
   );
 }
 
-Widget OutHomButton() {
-  return Container(
-    padding: EdgeInsets.all(20),
-    child: TextButton(
-        onPressed: () {},
-        child: const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Text(
-            'Salir',
-            style: TextStyle(
-              color: Color(0xff00D4CE),
-              fontSize: 25.0,
+class OutHomeButton extends StatelessWidget {
+  const OutHomeButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context, listen: false);
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: TextButton(
+          onPressed: () {
+            authService.logout();
+            Navigator.pushReplacementNamed(context, 'login');
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              'Salir',
+              style: TextStyle(
+                color: Color(0xff00D4CE),
+                fontSize: 25.0,
+              ),
             ),
           ),
-        ),
-        style: TextButton.styleFrom(
-            elevation: 10.0,
-            shadowColor: Colors.black,
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ))),
-  );
+          style: TextButton.styleFrom(
+              elevation: 10.0,
+              shadowColor: Colors.black,
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ))),
+    );
+  }
 }
