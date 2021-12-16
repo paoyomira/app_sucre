@@ -1,4 +1,6 @@
 // Importaciones Flutter
+import 'package:app_sucre/screens/incidents/incidents_screen.dart';
+import 'package:app_sucre/screens/reports/latest_reports_screen.dart';
 import 'package:app_sucre/services/app_services/authapi_service.dart';
 import 'package:flutter/material.dart';
 
@@ -26,11 +28,11 @@ class HomeScreen extends StatelessWidget {
                 children: const [
                   TableRow(children: [
                     HomeCardWidget(
-                        url: 'incidents',
+                        url: IncidentsScreen(),
                         textButton: 'Hacer un Reporte',
                         icon: Icons.rounded_corner),
                     HomeCardWidget(
-                        url: 'latestreports',
+                        url: LatestReportsScreen(),
                         textButton: 'Mis reportes',
                         icon: Icons.rounded_corner),
                   ]),

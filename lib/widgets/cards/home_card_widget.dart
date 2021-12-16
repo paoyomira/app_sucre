@@ -3,7 +3,7 @@ import 'package:app_sucre/services/services.dart';
 import 'package:provider/provider.dart';
 
 class HomeCardWidget extends StatelessWidget {
-  final String url;
+  final Widget url;
   final String textButton;
   final IconData icon;
   const HomeCardWidget(
@@ -17,7 +17,10 @@ class HomeCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushReplacementNamed(context, url);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => url),
+          );
         },
         child: Container(
           margin: const EdgeInsets.all(15),
