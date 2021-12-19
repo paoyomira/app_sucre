@@ -1,11 +1,13 @@
 // To parse this JSON data, do
 //
-//     final incidentsStatusReport = incidentsStatusReportFromMap(jsonString);
+//     final incidentsReport = incidentsReportFromMap(jsonString);
 
 import 'dart:convert';
 
-class IncidentsStatusReport {
-  IncidentsStatusReport({
+import 'package:app_sucre/providers/providers.dart';
+
+class IncidentsReport {
+  IncidentsReport({
     required this.id,
     required this.incidenciaid,
     required this.descripcion,
@@ -25,13 +27,12 @@ class IncidentsStatusReport {
   String longitud;
   String estadoreporte;
 
-  factory IncidentsStatusReport.fromJson(String str) =>
-      IncidentsStatusReport.fromMap(json.decode(str));
+  factory IncidentsReport.fromJson(String str) =>
+      IncidentsReport.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory IncidentsStatusReport.fromMap(Map<String, dynamic> json) =>
-      IncidentsStatusReport(
+  factory IncidentsReport.fromMap(Map<String, dynamic> json) => IncidentsReport(
         id: json["id"],
         incidenciaid: json["incidenciaid"],
         descripcion: json["descripcion"],
@@ -42,8 +43,20 @@ class IncidentsStatusReport {
         estadoreporte: json["estadoreporte"],
       );
 
-  factory IncidentsStatusReport.fromJsonList(Map<String, dynamic> json) {
-    return IncidentsStatusReport(
+  factory IncidentsReport.fromReportForm(CitizerReportFormProvider form) =>
+      IncidentsReport(
+        id: 0,
+        incidenciaid: 0,
+        descripcion: form.description,
+        fechareporte: DateTime.now(),
+        usuarioreporteid: 0,
+        latitud: '0',
+        longitud: '0',
+        estadoreporte: '',
+      );
+
+  factory IncidentsReport.fromJsonList(Map<String, dynamic> json) {
+    return IncidentsReport(
       id: json["id"],
       incidenciaid: json["incidenciaid"],
       descripcion: json["descripcion"],

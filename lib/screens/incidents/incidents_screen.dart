@@ -6,6 +6,8 @@ import 'package:app_sucre/services/services.dart';
 import 'package:app_sucre/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../screens.dart';
+
 class IncidentsScreen extends StatelessWidget {
   static const String routeName = 'incidents';
 
@@ -13,7 +15,6 @@ class IncidentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final apiService = Provider.of<ApiService>(context);
-    // apiService.getIncidentTypes();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Incidencias'),

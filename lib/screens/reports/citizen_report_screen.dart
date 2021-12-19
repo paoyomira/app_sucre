@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 // Importaciones Aplicación
 import 'package:app_sucre/widgets/widgets.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class CitizenReportScreen extends StatefulWidget {
@@ -79,14 +80,18 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                   ),
                   const SizedBox(height: 30.0),
                   TextFormField(
-                    minLines: 2,
+                    minLines: 6,
+                    maxLines: 8,
                     onChanged: (value) => reportForm.description = value,
                     validator: (value) {
-                      return (value != null && value.length >= 6)
-                          ? null
-                          : 'Por lo menos 6 caracteres';
+                      if (value != null && value.length <= 10) {
+                        return 'Por favor, brindenos más detalles';
+                      } else {
+                        if (value != null && value.length > 500) {
+                          return 'Ya no puede escribir más texto. ';
+                        }
+                      }
                     },
-                    maxLines: 6,
                     // autofocus: true,
                     decoration: InputDecoration(
                       hintText: 'Descripción del Reporte',
@@ -99,7 +104,7 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                       ),
                       fillColor: Colors.white,
                       filled: true,
-                      floatingLabelStyle: TextStyle(
+                      floatingLabelStyle: const TextStyle(
                         color: Colors.black87,
                       ),
                       border: OutlineInputBorder(
@@ -113,7 +118,43 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  EvidencePhotosButtonWidget(),
+                  // EvidencePhotosButtonWidget(),
+                  const SizedBox(height: 30),
+                  MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      disabledColor: Colors.grey,
+                      elevation: 0,
+                      color: Colors.deepPurple,
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 60, vertical: 15),
+                          child: Text(
+                            reportForm.isLoading ? 'Espere' : 'Reportar',
+                            style: const TextStyle(color: Colors.white),
+                          )),
+                      onPressed: reportForm.isLoading
+                          ? null
+                          : () async {
+                              FocusScope.of(context).unfocus();
+
+                              if (!reportForm.isValidForm()) return;
+                              reportForm.isLoading = true;
+
+                              final Response response =
+                                  await apiService.saveReport(reportForm);
+                              // print(errorMessage);
+                              if (response.statusCode == 200) {
+                                print(response.body);
+                                Navigator.pushReplacementNamed(context, 'home');
+                              } else {
+                                if (response.statusCode == 401) {
+                                  NotificationProvider.showSnackbar(
+                                      'Las credenciales no son correctas!');
+                                }
+                                reportForm.isLoading = false;
+                              }
+                            })
                 ],
               )),
         ));
