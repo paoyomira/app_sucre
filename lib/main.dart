@@ -47,10 +47,11 @@ class App extends StatelessWidget {
       },
       scaffoldMessengerKey: NotificationProvider.messengerKey,
       theme: ThemeData(
-          fontFamily: 'Raleway',
-          appBarTheme: AppBarTheme(
-            color: const Color(0xFF43c39d),
-          )),
+        fontFamily: 'Raleway',
+        appBarTheme: AppBarTheme(
+          color: const Color(0xFF43c39d),
+        ),
+      ),
     );
     // theme: ThemeData.light().copyWith(
     //   scaffoldBackgroundColor: Colors.white,

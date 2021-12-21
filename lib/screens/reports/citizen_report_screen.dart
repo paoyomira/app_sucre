@@ -1,11 +1,14 @@
 // Importaciones Flutter
+import 'dart:io';
+
 import 'package:app_sucre/models/models.dart';
 import 'package:app_sucre/providers/providers.dart';
 import 'package:app_sucre/services/services.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
 // Importaciones Aplicación
-import 'package:app_sucre/widgets/widgets.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +20,18 @@ class CitizenReportScreen extends StatefulWidget {
 }
 
 class _CitizenReportScreen extends State<CitizenReportScreen> {
+  final ImagePicker _picker = ImagePicker();
+  List<XFile>? _imageFileList = [];
+
+  void selectedImages() async {
+    final List<XFile>? selectedImages = await _picker.pickMultiImage();
+    if (selectedImages!.isNotEmpty) {
+      _imageFileList!.addAll(selectedImages);
+    }
+    print('Image List Lenght: ' + _imageFileList!.length.toString());
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final reportForm = Provider.of<CitizerReportFormProvider>(context);
@@ -115,6 +130,46 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                     // onChanged: (valor) {},
                   ),
                   const SizedBox(height: 20.0),
+                  TextButton(
+                      onPressed: () {
+                        selectedImages();
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          'Tomar Fotografia',
+                          style: TextStyle(
+                            color: Color(0xff00D4CE),
+                            fontSize: 25.0,
+                          ),
+                        ),
+                      ),
+                      style: TextButton.styleFrom(
+                          elevation: 10.0,
+                          shadowColor: Colors.black,
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ))),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GridView.builder(
+                          itemCount: _imageFileList!.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Image.file(
+                                File(_imageFileList![index].path),
+                                fit: BoxFit.cover,
+                              ),
+                            );
+                          }),
+                    ),
+                  ),
                   const SizedBox(
                     height: 20.0,
                   ),

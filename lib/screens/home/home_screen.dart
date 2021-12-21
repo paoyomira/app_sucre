@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
         drawer: const MenuWidget(),
         body: ListView(
           children: [
-            HomeAvatar(),
             HomeText(),
             HomeTextFinal(),
             Table(
@@ -28,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 TableRow(children: [
                   HomeCardWidget(
                       url: IncidentsScreen(),
-                      textButton: 'Hacer un Reporte',
+                      textButton: 'Reportar',
                       icon: Icons.source_rounded),
                   HomeCardWidget(
                       url: LatestReportsScreen(),
@@ -50,9 +49,9 @@ Widget HomeText() {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        SizedBox(height: 20.0),
+        SizedBox(height: 10.0),
         Text('Hola Eduardo'),
-        SizedBox(height: 20.0),
+        SizedBox(height: 10.0),
         Text('Bienvenido al Portal de Incidencias'),
       ],
     ),
@@ -61,7 +60,7 @@ Widget HomeText() {
 
 Widget HomeTextFinal() {
   return Container(
-    padding: const EdgeInsets.all(30),
+    padding: const EdgeInsets.all(10),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -117,7 +116,7 @@ class OutHomeButton extends StatelessWidget {
             Navigator.pushReplacementNamed(context, 'login');
           },
           child: const Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(10.0),
             child: Text(
               'Salir',
               style: TextStyle(

@@ -40,10 +40,10 @@ class HomeCardWidget extends StatelessWidget {
                 radius: 30,
                 backgroundColor: Color(0xff43c39d),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 25),
               Text(textButton,
-                  style: const TextStyle(color: Colors.black, fontSize: 18)),
-              const SizedBox(height: 30),
+                  style: const TextStyle(color: Colors.black, fontSize: 15)),
+              const SizedBox(height: 15),
             ],
           ),
         ));
