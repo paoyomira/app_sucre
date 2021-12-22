@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:path/path.dart';
+import 'package:async/async.dart';
 import 'package:app_sucre/models/models.dart';
 import 'package:app_sucre/providers/app_providers/citizen_report_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 // import 'dart:convert' as convert;
 
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
 
 class ApiService extends ChangeNotifier {
@@ -113,7 +115,6 @@ class ApiService extends ChangeNotifier {
   saveReport(CitizerReportFormProvider form) async {
     await _readToken();
     LocationData currentLocation = await _location.getLocation();
-    print(currentLocation);
     final Map<String, dynamic> report = {
       'id': '0',
       'incidenciaid': form.selectedOption!.id.toString(),
@@ -126,17 +127,47 @@ class ApiService extends ChangeNotifier {
     };
 
     final url = Uri.https(_baseUrl, 'api/crear-reporte-incidencia');
-    // final msg = jsonEncode(report);
-    // print(_requestHeaders);
 
     final response =
         await http.post(url, body: report, headers: _requestHeaders);
-    print(response.statusCode);
-    print(response.body);
-    print(_requestHeaders);
+
+    // Save all Image to FileServer
+
+    //  await _saveImages(form.imageArray);
+
+    final imageUrl =
+        Uri.https(_baseUrl, 'api/cargar-imagen-reporte-incidencia');
+    for (var i = 0; i < form.imageArray.length; i++) {
+      // Todo: Api Debería devolver el Id de Reporte
+
+      var length = await form.imageArray[i].length();
+      var stream = form.imageArray[i].openRead(0, length);
+
+      var request = http.MultipartRequest("POST", imageUrl);
+
+      var multipartFile = http.MultipartFile('file', stream, length,
+          filename: basename(form.imageArray[i].path));
+
+      request.headers.addAll(_requestHeaders);
+      request.fields['reporteid'] = '16';
+      request.fields['nombre'] = 'asas';
+      request.fields['extension'] = 'asas';
+      request.fields['tipodocumentoid'] = '1';
+      request.fields['urlrepositorio'] = '';
+      request.files.add(multipartFile);
+      var response = await request.send();
+      print('la wea isi');
+      print(response.statusCode);
+      print(response.request);
+    }
+
     notifyListeners();
     return response;
   }
+
+  // _saveImages(List<XFile> imageArray) async {
+
+  // }
 
   getIncidentsSearch() async {
     final url = Uri.https(_baseUrl, 'api/buscar-incidencia-por-tipo');
@@ -184,11 +215,5 @@ class ApiService extends ChangeNotifier {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer ' + token
     };
-
-    //  {
-    //   'Content-type': 'application/json',
-    //   'Accept': 'application/json',
-    //   'Authorization': 'Bearer ' + token
-    // };
   }
 }

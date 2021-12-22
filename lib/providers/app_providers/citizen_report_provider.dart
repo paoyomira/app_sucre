@@ -1,5 +1,6 @@
 import 'package:app_sucre/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CitizerReportFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -9,6 +10,8 @@ class CitizerReportFormProvider extends ChangeNotifier {
   String password = '';
   IncidentsResponse? selectedOption;
   String description = '';
+  // Have a List of Photos
+  List<XFile> imageArray = [];
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;

@@ -20,33 +20,18 @@ class CitizenReportScreen extends StatefulWidget {
 }
 
 class _CitizenReportScreen extends State<CitizenReportScreen> {
-  var image;
-  List imageArray = [];
-
-  Future pickImage() async {
-    image = await ImagePicker().pickImage(source: ImageSource.camera);
-    imageArray.add(image);
-    setState(() {
-      imageArray;
-    });
-  }
-
-  final ImagePicker _picker = ImagePicker();
-  List<XFile>? _imageFileList = [];
-
-  void selectedImages() async {
-    final List<XFile>? selectedImages = await _picker.pickMultiImage();
-    if (selectedImages!.isNotEmpty) {
-      _imageFileList!.addAll(selectedImages);
-    }
-    print('Image List Lenght: ' + _imageFileList!.length.toString());
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     final reportForm = Provider.of<CitizerReportFormProvider>(context);
     final apiService = Provider.of<ApiService>(context);
+
+    Future pickImage() async {
+      var image = await ImagePicker().pickImage(source: ImageSource.camera);
+      reportForm.imageArray.add(image!);
+      setState(() {
+        reportForm.imageArray;
+      });
+    }
 
     var lista = apiService.incidents.map((item) {
       return DropdownMenuItem(
@@ -162,24 +147,12 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ))),
-                  Container(
-                      height: MediaQuery.of(context).size.height * .8,
-                      decoration: BoxDecoration(border: Border.all(width: 2)),
-                      child: imageArray.isEmpty
-                          ? Center(child: Text('No image'))
-                          : GridView.count(
-                              crossAxisCount: 2,
-                              children:
-                                  List.generate(imageArray.length, (index) {
-                                var img = imageArray[index];
-                                return Image.file(img);
-                              }),
-                            )),
+
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: GridView.builder(
-                          itemCount: _imageFileList!.length,
+                          itemCount: reportForm.imageArray.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3),
@@ -187,7 +160,7 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                             return Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: Image.file(
-                                File(_imageFileList![index].path),
+                                File(reportForm.imageArray[index].path),
                                 fit: BoxFit.cover,
                               ),
                             );
@@ -216,20 +189,17 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                           ? null
                           : () async {
                               FocusScope.of(context).unfocus();
-
                               if (!reportForm.isValidForm()) return;
                               reportForm.isLoading = true;
-
                               final Response response =
                                   await apiService.saveReport(reportForm);
                               // print(errorMessage);
                               if (response.statusCode == 200) {
-                                print(response.body);
                                 Navigator.pushReplacementNamed(context, 'home');
                               } else {
                                 if (response.statusCode == 401) {
                                   NotificationProvider.showSnackbar(
-                                      'Las credenciales no son correctas!');
+                                      'Corregir error');
                                 }
                                 reportForm.isLoading = false;
                               }
@@ -237,10 +207,6 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                 ],
               )),
         ));
-    // Form(
-    // key: reportForm.formKey,
-    // autovalidateMode: AutovalidateMode.onUserInteraction,
-    // child:));
   }
 
   Widget evidence() {
@@ -254,137 +220,3 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
     );
   }
 }
-// class CitizenReportScreen extends StatelessWidget {
-//   const CitizenReportScreen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Reporte Ciudadano'),
-//       ),
-//       body: ListView(
-//         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-//         children: [
-//           const Text('Reportar Incidencia'),
-//           Row(
-//       children: <Widget>[
-//         const Icon(Icons.select_all),
-//         const SizedBox(width: 30.0),   
-//         Expanded(
-//           child: DropdownButton(
-//             value: _opcionSeleccionada,
-//             items: getOpcionesDropdown(),
-//             onChanged: (opt) {
-//               setState(() {
-//                 _opcionSeleccionada = opt;
-//               });
-//             },
-//           ),
-//         )
-
-//       ],
-//     ),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           const IncidenceDetailWidget(),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           const IncidenceDescriptionWidget(),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           const Text('Fotos Evidencia'),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           TextButton(onPressed: () {}, child: const Text('Tomar Fotografia')),
-//           const SizedBox(
-//             height: 20.0,
-//           ),
-//           const EvidencePhotosButtonWidget(),
-//         ],
-//       ),
-//     );
-
-//     // const Text('Reportar Incidencia'),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // const IncidenceDetailWidget(),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // const IncidenceDescriptionWidget(),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // const Text('Fotos Evidencia'),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // TextButton(onPressed: () {}, child: const Text('Tomar Fotografia')),
-//     // const SizedBox(
-//     //   height: 20.0,
-//     // ),
-//     // const EvidencePhotosButtonWidget(),
-//   }
-// }
-
-// // class CitizenReportScreen extends StatefulWidget {
-// //   const CitizenReportScreen({Key? key}) : super(key: key);
-
-// //   @override
-// //   _CitizenReportScreenState createState() => _CitizenReportScreenState();
-// // }
-
-// // class _CitizenReportScreenState extends State<CitizenReportScreen> {
-// //   @override
-// //   Widget build(BuildContext context) {
-// //     final apiService = Provider.of<ApiService>(context);
-// //     return Scaffold(
-// //         appBar: AppBar(
-// //           title: const Text('Reporte Ciudadano'),
-// //         ),
-// //         body: ListView.builder(
-// //           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-// //           itemCount: apiService.incidents.length,
-// //           scrollDirection: Axis.vertical,
-// //           itemBuilder: (_, int index) =>
-// //               IncidenceDetailWidget(incident: apiService.incidents[index]),
-// //         ));
-
-// //     // const Text('Reportar Incidencia'),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // const IncidenceDetailWidget(),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // const IncidenceDescriptionWidget(),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // const Text('Fotos Evidencia'),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // TextButton(onPressed: () {}, child: const Text('Tomar Fotografia')),
-// //     // const SizedBox(
-// //     //   height: 20.0,
-// //     // ),
-// //     // const EvidencePhotosButtonWidget(),
-// //   }
-// // }
