@@ -20,6 +20,17 @@ class CitizenReportScreen extends StatefulWidget {
 }
 
 class _CitizenReportScreen extends State<CitizenReportScreen> {
+  var image;
+  List imageArray = [];
+
+  Future pickImage() async {
+    image = await ImagePicker().pickImage(source: ImageSource.camera);
+    imageArray.add(image);
+    setState(() {
+      imageArray;
+    });
+  }
+
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageFileList = [];
 
@@ -132,7 +143,7 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                   const SizedBox(height: 20.0),
                   TextButton(
                       onPressed: () {
-                        selectedImages();
+                        pickImage();
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(10.0),
@@ -151,6 +162,19 @@ class _CitizenReportScreen extends State<CitizenReportScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ))),
+                  Container(
+                      height: MediaQuery.of(context).size.height * .8,
+                      decoration: BoxDecoration(border: Border.all(width: 2)),
+                      child: imageArray.isEmpty
+                          ? Center(child: Text('No image'))
+                          : GridView.count(
+                              crossAxisCount: 2,
+                              children:
+                                  List.generate(imageArray.length, (index) {
+                                var img = imageArray[index];
+                                return Image.file(img);
+                              }),
+                            )),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
