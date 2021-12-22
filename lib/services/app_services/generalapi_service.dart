@@ -132,9 +132,6 @@ class ApiService extends ChangeNotifier {
         await http.post(url, body: report, headers: _requestHeaders);
 
     // Save all Image to FileServer
-
-    //  await _saveImages(form.imageArray);
-
     final imageUrl =
         Uri.https(_baseUrl, 'api/cargar-imagen-reporte-incidencia');
     for (var i = 0; i < form.imageArray.length; i++) {
@@ -147,18 +144,14 @@ class ApiService extends ChangeNotifier {
 
       var multipartFile = http.MultipartFile('file', stream, length,
           filename: basename(form.imageArray[i].path));
-
       request.headers.addAll(_requestHeaders);
       request.fields['reporteid'] = '16';
-      request.fields['nombre'] = 'asas';
-      request.fields['extension'] = 'asas';
-      request.fields['tipodocumentoid'] = '1';
+      request.fields['nombre'] = form.imageArray[i].name;
+      request.fields['extension'] = form.imageArray[i].mimeType!;
+      request.fields['tipodocumentoid'] = '';
       request.fields['urlrepositorio'] = '';
       request.files.add(multipartFile);
-      var response = await request.send();
-      print('la wea isi');
-      print(response.statusCode);
-      print(response.request);
+      await request.send();
     }
 
     notifyListeners();
